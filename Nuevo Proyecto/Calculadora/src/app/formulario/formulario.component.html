@@ -1,0 +1,52 @@
+<div style="text-align:center">
+    <h1>Aplicación: {{ titulo }}</h1>
+</div>
+
+<div>
+    <label for="email">Correo electrónico:</label><br>
+    <input type="email" name="email" id="email" [(ngModel)]="email"><br><br>
+</div>
+
+<div>
+    <label for="direccion">Dirección:</label><br>
+    <textarea name="direccion" id="direccion" cols="30" rows="10" [(ngModel)]="direccion"></textarea><br><br>
+</div>
+
+<div>
+    <label for="telefono">Teléfono:</label><br>
+    <input type="text" name="telefono" id="telefono"[(ngModel)]="telefono"><br><br>
+</div>
+
+<div>
+    <label for="comunidad">Comunidad:</label>
+    <select name="comunidad" id="comunidad" [(ngModel)]="comuni">
+      <option *ngFor="let comuni of comunidades" [value]="comuni">{{comuni}}</option>
+    </select><br><br>
+</div>
+
+<div>
+    <label for="pagos">Forma de pagos:</label>
+    <div>
+        <label for="efectivo">Efectivo</label>
+        <input type="radio" name="pago" value="efectivo" [(ngModel)]="pago">
+        <label for="tarjeta">Tarjeta</label>
+        <input type="radio" name="pago" value="tarjeta" [(ngModel)]="pago">
+    </div><br><br>
+</div>
+
+<div>
+    <input type="checkbox" name="informacion" id="informacion" [(ngModel)]="informacion">
+    <label for="info">Acepta recibir información de nuestros prodcutos</label><br><br>
+
+    <button (click)="mostrar()">Enviar</button>
+</div>
+
+<div *ngIf="mostrar">
+    <h1>Información de la compra</h1>
+    <p>Correo electrónico: {{email}}</p>
+    <p>Dirección: {{direccion}}</p>
+    <p>Teléfono: {{telefono}}</p>
+    <p>Comunidad: {{comuni}}</p>
+    <p>Forma de pago: {{pago}}</p>
+    <p>¿Desea recibir información?: {{informacion?"Sí":"No"}}</p>
+  </div>
