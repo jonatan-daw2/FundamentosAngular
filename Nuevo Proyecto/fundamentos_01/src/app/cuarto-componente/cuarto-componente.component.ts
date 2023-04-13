@@ -8,8 +8,9 @@ import { Component } from '@angular/core';
 export class CuartoComponenteComponent {
   titulo:string = "Data biding";
   contador:number = 0;
-  constructor(){
+  color:string = "background-color: red";
 
+  constructor(){
   }
 
   ngOnInit(): void{
@@ -18,6 +19,9 @@ export class CuartoComponenteComponent {
 
   evento(){
     this.contador++;
+    if(this.color = "background-color: blue"){
+      this.color = "background-color: red";
+    }    
   }
 
   /*interpolacion(){

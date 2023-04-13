@@ -1,0 +1,13 @@
+  <div style="text-align:center">
+    <h1>Aplicación: {{ titulo }}</h1>
+  </div>
+
+  <form>
+      <label for="dato1">Introduzca cantidad de Euros</label>
+      <input type="number" name="dato1" [(ngModel)]="dato1"/><br>
+
+    <button type="submit" (click)="conversionDolares()">Dolares</button>
+    <button type="submit" (click)="conversionPesos()">Peso Dominicano</button>
+    <button type="submit" (click)="ConversionYenes()">Yenes</button>
+  </form>
+  <p>Resultado {{ resultado }}</p>

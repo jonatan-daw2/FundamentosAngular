@@ -1,0 +1,45 @@
+
+    <div style="text-align:center">
+      <h1>Aplicación: {{ titulo }}</h1>
+    </div>
+  
+    <form>
+        <label for="dato1">dato1:</label>
+        <input type="number" name="dato1" [(ngModel)]="dato1"/><br>
+
+        <label for="dato2">dato2:</label>
+        <input type="number" name="dato2" [(ngModel)]="dato2"/><br><br>
+  
+      <button type="submit" (click)="sumar()">Sumar</button>
+      <button type="submit" (click)="restar()">Restar</button>
+      <button type="submit" (click)="dividir()">Dividir</button>
+      <button type="submit" (click)="multiplicar()">Multiplicar</button>
+    </form>
+    <p>Resultado {{ resultado }}</p>
+
+    <!--<table>
+        <caption>{{dato3}} {{signo[0]}} {{dato4}} {{signo[0]}} {{resultado2}}</caption>
+        <tr>
+            <button [(ngModel)]="dato3" [(ngModel)]="dato4" (click)="pulsanumero()">7</button>
+            <button [(ngModel)]="dato3" [(ngModel)]="dato4">8</button>
+            <button [(ngModel)]="dato3" [(ngModel)]="dato4">9</button>
+            <button [(ngModel)]="signo">x</button>
+        </tr>
+        <tr>
+            <button [(ngModel)]="dato3" [(ngModel)]="dato4">4</button>
+            <button [(ngModel)]="dato3" [(ngModel)]="dato4">5</button>
+            <button [(ngModel)]="dato3" [(ngModel)]="dato4">6</button>
+            <button [(ngModel)]="signo">÷</button>
+        </tr>
+        <tr>
+            <button [(ngModel)]="dato3" [(ngModel)]="dato4">1</button>
+            <button [(ngModel)]="dato3" [(ngModel)]="dato4">2</button>
+            <button [(ngModel)]="dato3" [(ngModel)]="dato4">3</button>
+            <button [(ngModel)]="signo">+</button>
+        </tr>
+        <tr >
+            <button style="width: 50%" [(ngModel)]="dato3" [(ngModel)]="dato4">0</button>
+            <button style="width: 25%" [(ngModel)]="signo">=</button>
+            <button style="width: 25%" [(ngModel)]="signo">-</button>
+        </tr>
+    </table>-->
