@@ -1,0 +1,51 @@
+<div style="text-align:center">
+    <h1>Formulario bicicleta</h1>
+</div>
+
+<div>
+    <label for="color">Color bicicleta:</label><br>
+    <input type="text" name="color" id="color" [(ngModel)]="color"> 
+</div>
+<div>
+    <label for="marca">Marca bicicleta:</label><br>
+    <input type="texto" name="marca" id="marca" [(ngModel)]="marca"> 
+</div>
+<div>
+    <label for="piniones">Piñones bicicleta:</label><br>
+    <input type="number" name="piniones" id="piniones" [(ngModel)]="piniones"> 
+</div>
+<div>
+    <label for="platos">Platos bicicleta:</label><br>
+    <input type="number" name="platos" id="platos" [(ngModel)]="platos"> 
+</div>
+<div>
+    <label for="pagos">Bicicleta electrica:</label>
+    <div>
+        <label for="electrica">Si</label>
+        <input type="checkbox" id="electrica" name="electrica" [(ngModel)]="electrica">
+    </div><br><br>
+</div>
+<div>
+    <div>
+        <label for="aumentar">Aumentar bicicleta:</label><br>
+        <input type="number" name="aumentar" id="aumentar" [(ngModel)]="acelera">
+        <button (click)="aumentar()">Aumentar</button>
+    </div>
+</div>
+<div>
+    <div>
+        <label for="frenar">Frenar bicicleta:</label><br>
+        <input type="number" name="frenar" id="frenar" [(ngModel)]="frena">
+        <button (click)="disminuir()">Frenar</button>
+    </div>
+</div>
+
+<button (click)="mostrar()">Enviar</button>
+
+<h2>Información de la Bicicleta</h2>
+<p>Color: {{bicicleta.color}}</p>
+<p>Marca: {{bicicleta.marca}}</p>
+<p>Platos: {{bicicleta.piniones}}</p>
+<p>Piñones: {{bicicleta.platos}}</p>
+<p>Eléctrica: {{bicicleta.electrica?"Sí":"No"}}</p>
+<p>Velocidad: {{bicicleta.velocidad}}</p>
