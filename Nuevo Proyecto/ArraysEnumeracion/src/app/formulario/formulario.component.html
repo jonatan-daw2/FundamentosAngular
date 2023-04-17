@@ -1,0 +1,18 @@
+<h1>Ejemplo Unión de tipos y enumerados</h1>
+<p>Identificador</p>
+<input type="text" [(ngModel)]="id"><br>
+<p>Nombre</p>
+<input type="text" [(ngModel)]="nombre"><br>
+<p>Telefono</p>
+<input type="text" [(ngModel)]="telefono"><br><br>
+<select [(ngModel)]="coche">
+    <option *ngFor="let coche of cochesEnumerado" [value]="coche">{{coche}}</option>
+</select><br><br>
+<button (click)="mostrar()">Enviar</button>
+<div *ngIf="resultado==true">
+    <p>Identificador: {{id}}</p>
+    <p>Nombre: {{nombre}}</p>
+    <p>Telefono: {{telefono}}</p>
+    <p>Coche: {{coche}}</p>
+</div>
+

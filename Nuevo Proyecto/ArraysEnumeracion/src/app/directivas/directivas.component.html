@@ -1,0 +1,31 @@
+<h1>Directivas</h1>
+<ng-template>
+    <div>Nothing to show</div>
+</ng-template>
+<p>Nombre:</p>
+<input type="text" [(ngModel)]="nombre"><br>
+<p>Edad:</p>
+<input type="number" [(ngModel)]="edad"><br><br>
+<p>Coches:</p>
+<select [(ngModel)]="coche">
+    <option *ngFor="let coche of coches" [value]="coche">{{coche}}</option>
+</select><br><br>
+<div>
+    <p>Numero:</p>
+    <input type="number" [(ngModel)]="numero"><br>
+    <div [ngSwitch]="numero">
+        <div *ngSwitchCase="'1'">Uno</div>
+        <div *ngSwitchCase="'2'">Dos</div>
+        <div *ngSwitchCase="'3'">Tres</div>
+        <div *ngSwitchCase="'4'">Cuatro</div>
+        <div *ngSwitchCase="'5'">Cinco</div>
+        <div *ngSwitchDefault>No esta tu número, así que será 6</div>
+    </div>
+</div><br><br>
+<button (click)="mostrar()">Enviar</button><br>
+<div *ngIf="resultado==true">
+    <p>Nombre: {{nombre}}</p>
+    <p>Edad: {{edad}}</p>
+    <p>Coche: {{coche}}</p>
+    <p>Número elegido: {{numero}} </p>
+</div>
