@@ -13,7 +13,7 @@ export class Producto{
         this._nombre = nombre,
         this._precio = precio;
         this._stock = stock;
-        this._id=++Producto.cont;
+        this._id=Producto.cont++;
         this._tipo = tipo;
     }
 
