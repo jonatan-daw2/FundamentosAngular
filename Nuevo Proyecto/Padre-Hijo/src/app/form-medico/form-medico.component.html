@@ -1,0 +1,6 @@
+<h1>Formulario para médicos</h1>
+<p>Nombre: <input type="text" [(ngModel)]="medicos1.nombre"></p>
+<p>Apellidos: <input type="text" [(ngModel)]="medicos1.apellidos"></p>
+<p>Cédula: <input type="number" [(ngModel)]="medicos1.cedula"></p>
+<p>Foto: <input type="text" [(ngModel)]="medicos1.foto"></p>
+<app-lista-medico [medicos2]="medicos1"></app-lista-medico>

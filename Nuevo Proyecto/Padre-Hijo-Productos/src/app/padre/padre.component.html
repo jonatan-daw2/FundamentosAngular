@@ -1,0 +1,14 @@
+<p>Nombre del producto</p>
+<input type="text" [(ngModel)]="producto._nombre"><br>
+<p>Precio del producto</p>
+<input type="number" [(ngModel)]="producto._precio"><br>
+<p>Número de existencias</p>
+<input type="text" [(ngModel)]="producto._stock"><br>
+<div>
+    <label for="tipoProductoo">Tipo de producto:</label>
+    <select name="tipoProductoo" id="tipoProductoo" [(ngModel)]="producto._tipo">
+      <option *ngFor="let pro of tiposDeProductos" [value]="pro">{{pro}}</option>
+    </select><br><br>
+</div>
+<button (click)="actualizar()">Enviar datos</button>
+<app-hijo [listadoProductos]="productos"></app-hijo>

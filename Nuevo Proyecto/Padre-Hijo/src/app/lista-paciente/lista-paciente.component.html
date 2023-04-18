@@ -1,0 +1,14 @@
+<app-form-paciente (pacienteEnviado)="anadir($event)"></app-form-paciente>
+<table>
+    <caption>Listado de pacientes</caption>
+    <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Apellidos</th>
+    </tr>
+    <tr *ngFor="let paciente of pacientesLista">
+        <td>{{paciente.id}}</td>
+        <td>{{paciente.nombre}}</td>
+        <td>{{paciente.apellidos}}</td>
+    </tr>
+</table>

@@ -7,11 +7,6 @@ import { Bicicleta } from '../modelo_bicicleta/bicicleta';
   styleUrls: ['./bicicleta.component.css']
 })
 export class BicicletaComponent {
-  color:string = "";
-  marca:string = "";
-  piniones:number = 0;
-  platos:number = 0;
-  electrica:boolean = false;
   datos:boolean = false
   acelera:number = 0;
   frena:number = 0;
@@ -24,11 +19,11 @@ export class BicicletaComponent {
   }
   
   mostrar() {
-    this.bicicleta.color = this.color;
-    this.bicicleta.marca = this.marca;
-    this.bicicleta.piniones = this.piniones;
-    this.bicicleta.platos = this.platos;
-    this.bicicleta.electrica = this.electrica;
+    this.bicicleta.color;
+    this.bicicleta.marca;
+    this.bicicleta.piniones;
+    this.bicicleta.platos;
+    this.bicicleta.electrica;
     this.datos = true;
   }
 

@@ -1,0 +1,8 @@
+<h1>Comunicacion de hijo a padre</h1><br>
+<p>Nombre de cliente:</p>
+<input type="text" [(ngModel)]="pedido.nombreCliente"><br>
+<p>Total productos</p>
+<input type="number" [(ngModel)]="pedido.totalProductos"><br>
+<p>Importe total</p>
+<input type="number" [(ngModel)]="pedido.importeTotal"><br>
+<button (click)="enviarPedido()">Enviar datos</button>

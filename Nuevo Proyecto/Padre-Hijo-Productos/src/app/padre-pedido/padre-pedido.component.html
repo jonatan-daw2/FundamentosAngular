@@ -1,0 +1,17 @@
+<app-hijo-pedido (pedidoEnviado)="aniadir($event)"></app-hijo-pedido>
+<table>
+    <tr>
+        <th>ID CLiente</th>
+        <th>ID Pedido</th>
+        <th>Nombre Cliente</th>
+        <th>Total de productos</th>
+        <th>Importe total</th>
+    </tr>
+    <tr *ngFor="let datos of pedidos">
+        <td>{{datos.idClientes}}</td>
+        <td>{{datos.idPedidos}}</td>
+        <td>{{datos.nombreCliente}}</td>
+        <td>{{datos.totalProductos}}</td>
+        <td>{{datos.importeTotal}}</td>
+    </tr>
+</table>

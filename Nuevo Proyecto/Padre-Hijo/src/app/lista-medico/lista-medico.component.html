@@ -1,0 +1,18 @@
+<p><button (click)="anadir()">Aceptar</button></p>
+<table>
+    <caption>Listado de médicos</caption>
+    <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Apellidos</th>
+        <th>Cedula</th>
+        <th>Foto</th>
+    </tr>
+    <tr *ngFor="let medico of medicosLista">
+        <td>{{medico.id}}</td>
+        <td>{{medico.nombre}}</td>
+        <td>{{medico.apellidos}}</td>
+        <td>{{medico.cedula}}</td>
+        <td><img src={{medico.foto}}></td>
+    </tr>
+</table>

@@ -3,17 +3,19 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FuncionesArraysComponent } from './funciones-arrays/funciones-arrays.component';
+import { PadreComponent } from './padre/padre.component';
 import { FormsModule } from '@angular/forms';
-import { FormularioComponent } from './formulario/formulario.component';
-import { DirectivasComponent } from './directivas/directivas.component';
+import { HijoComponent } from './hijo/hijo.component';
+import { HijoPedidoComponent } from './hijo-pedido/hijo-pedido.component';
+import { PadrePedidoComponent } from './padre-pedido/padre-pedido.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    FuncionesArraysComponent,
-    FormularioComponent,
-    DirectivasComponent,
+    PadreComponent,
+    HijoComponent,
+    HijoPedidoComponent,
+    PadrePedidoComponent
   ],
   imports: [
     BrowserModule,
