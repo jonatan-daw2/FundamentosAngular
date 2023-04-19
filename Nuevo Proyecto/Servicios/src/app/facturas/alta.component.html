@@ -1,0 +1,112 @@
+<table>
+    <tr>
+        <th>Alta</th>
+        <th>Baja</th>
+        <th>Modificar</th>
+        <th>Consulta</th>
+        <th>Consultar todo</th>
+    </tr>
+    <tr>
+        <td><button (click)="botonAlta()">alta</button></td>
+        <td><button (click)="botonBaja()">baja</button></td>
+        <td><button (click)="bontonModificar()">modificar</button></td>
+        <td><button (click)="bontonConsulta()">consultar</button></td>
+        <td><button (click)="botonConsultarTodo()">consultar todo</button></td>
+    </tr>
+</table>
+
+<div *ngIf="altaEntrada">
+<h1>Dar de alta</h1>
+<p>Factura total</p>
+<input type="number" [(ngModel)]="facturas.totalFactura">
+<p>Iva</p>
+<input type="number" [(ngModel)]="facturas.iva"><br><br>
+<button (click)="nuevaFactura()">Guardar</button>
+</div>
+
+<div *ngIf="consultarTodoEntrada">
+    <div *ngIf="facturasArray.length==0 else resultado">
+        <b>No hay resultados</b>
+    </div>
+    <ng-template #resultado>
+        <h1>Todos los datos</h1>
+        <table>
+            <tr>
+                <th>ID Factura</th>
+                <th>ID Cliente</th>
+                <th>Total Factura</th>
+                <th>Iva</th>
+            </tr>
+            <tr *ngFor="let datos of facturasArray">
+                    <td>{{datos.idFacturas}}</td>
+                    <td>{{datos.idCliente}}</td>
+                    <td>{{datos.totalFactura}}</td>
+                    <td>{{datos.iva}}</td>
+            </tr>
+        </table>
+    </ng-template>
+</div>
+
+
+
+<div *ngIf="consultaEntrada">
+    <h1>Consulta única</h1>
+    <p>ID factura</p>
+    <input type="number" [(ngModel)]="busquedaConsulta"><br>
+    <button (click)="buscar()">Buscar</button>
+    <div *ngFor="let datos of facturasArray">
+        <div *ngIf="busquedaConsulta == datos.idFacturas && resultadoBusqueda==true">
+            <table>
+                <tr>
+                    <th>ID Factura</th>
+                    <th>ID Cliente</th>
+                    <th>Total Factura</th>
+                    <th>Iva</th>
+                </tr>
+                <tr>
+                        <td>{{datos.idFacturas}}</td>
+                        <td>{{datos.idCliente}}</td>
+                        <td>{{datos.totalFactura}}</td>
+                        <td>{{datos.iva}}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="modificacionEntrada">
+    <h1>Modificar</h1>
+    <p>ID factura</p>
+    <input type="number" [(ngModel)]="busquedaConsulta">
+    <p>Factura total</p>
+    <input type="number" [(ngModel)]="modificarFactura">
+    <p>Iva</p>
+    <input type="number" [(ngModel)]="modificarIva"><br><br>
+    <button (click)="modificar()">Enviar</button>
+
+    <div *ngFor="let datos of facturasArray">
+        <div *ngIf="busquedaConsulta == datos.idFacturas">
+            <table>
+                <tr>
+                    <th>ID Factura</th>
+                    <th>ID Cliente</th>
+                    <th>Total Factura</th>
+                    <th>Iva</th>
+                </tr>
+                <tr>
+                    <td>{{datos.idFacturas}}</td>
+                    <td>{{datos.idCliente}}</td>
+                    <td>{{datos.totalFactura}}</td>
+                    <td>{{datos.iva}}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="bajaEntrada">
+    <h1>Eliminar</h1>
+    <p>ID factura</p>
+    <input type="number" [(ngModel)]="busquedaConsulta"><br><br>
+    <button (click)="eliminar()">Enviar</button>
+</div>
