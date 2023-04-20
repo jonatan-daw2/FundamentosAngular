@@ -1,0 +1,18 @@
+
+<h1>Listado de cursos</h1>
+<div>
+    <table>
+        <tr>
+            <th>ID Curso</th>
+            <th>Nombre Curso</th>
+            <th>Duracion Curso</th>
+            <th>Nivel Curso</th>
+        </tr>
+        <tr *ngFor="let datos of cursosArray">
+            <td><a routerLink="modificar/{{datos.id}}">{{datos.id}}</a></td>
+            <td>{{datos.nombre}}</td>
+            <td>{{datos.duracion}}</td>
+            <td>{{datos.nivel}}</td>
+        </tr>
+    </table>
+</div>

@@ -1,0 +1,14 @@
+<h1>Modificacion Del curso {{this.id}}</h1>
+<div>
+    <p>Id curso:</p>
+    <input type="number" [(ngModel)]="id" value="{{this.id}}"><br>
+    <p>Nombre del curso:</p>
+    <input type="text" [(ngModel)]="nombre"><br>
+    <p>Duracion del curso:</p>
+    <input type="number" [(ngModel)]="duracion"><br>
+    <p>Nivel del curso:</p>
+    <select name="tipoProductoo" id="tipoProductoo" [(ngModel)]="nivel">
+        <option *ngFor="let pro of nivelesArray" [value]="pro">{{pro}}</option>
+    </select><br><br>
+    <button routerLink="" (click)="modificar()">Enviar datos</button>
+</div>
