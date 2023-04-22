@@ -1,0 +1,120 @@
+/* You can add global styles to this file, and also import other style files */
+.fondo{
+    background-image: url("./assets/img/fondo2.gif");
+    background-repeat: repeat-x;
+    background-size: 644px;
+
+}
+
+footer {
+    background-color:  rgba(115, 0, 255, 0.3);
+    
+}
+
+#carouselExampleCaptions {
+    margin-top:100px;
+    margin-left: 20px;
+    width: 500px;
+    height: 300px;
+
+  }
+  
+.carousel-inner img {
+    width: 500px;
+    height: 300px;
+}
+
+.carousel-item img {
+    border: 2px solid transparent;
+    border-radius: 10px;
+  }
+.navbar {
+    background-color: rgba(115, 0, 255, 0.3);
+    color: white;
+}
+
+.nav-link:hover {
+    background-color: rgb(215, 94, 215);
+    color: white;
+    transition: background-color 0.5s ease;
+    border: 2px solid purple;
+}
+
+.navbar-nav .nav-link {
+    border-radius: 15px;
+}
+
+.d-flex.justify-content-center {
+   height: 513px;
+}
+
+/* footer */
+.nav-link {
+    border-radius: 10px; /* el valor de la propiedad border-radius determina el radio de la esquina del botón */
+}
+
+.carousel-item .carousel-caption {
+    /* estilos específicos para la etiqueta carousel-caption dentro de carousel-item */
+    color: bisque;
+}
+
+.card-body {
+    font-size: 12px;
+}
+
+.fondoBlog{
+    background-image: url("./assets/img/fondoblog.gif");
+    background-repeat: repeat-x;
+    background-size: 650px;
+}
+
+.card{
+    width: 18rem;
+    height: 500px; 
+    margin-top: 10px;
+    border: 2px solid black;
+}
+
+.container-formulario{
+    width: 500px;
+    height: 500px;
+    margin-left: 400px;
+    background-color: transparent;
+    color: white;
+}
+
+.fondo-fomulario{
+    background-image: url("./assets/img/fondo-formulario.gif");
+    background-repeat: repeat-x;
+    background-size: 600px;
+    height: 513px;
+    padding-top: 5px;
+}
+
+.form-group{
+    width: 250px;
+    margin: auto;
+}
+
+.formulario {
+    margin-left: 220px;
+}
+
+.blog{
+    margin-left:10px;
+}
+
+h2{
+    text-align: center;
+}
+
+.fondo-habilidades{
+    background-image: url("./assets/img/217da299cc918fad9b76eb99e4bb75b3.webp");
+    background-repeat: no-repeat;
+    background-size: 1280px;
+}
+
+.card {
+    background-color: transparent;
+    color: green;
+}
