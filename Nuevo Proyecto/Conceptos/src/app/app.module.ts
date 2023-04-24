@@ -13,6 +13,10 @@ import { DirectivasComponent } from './directivas/directivas.component';
 import { EnvioIdComponent } from './envio-id/envio-id.component';
 import { RecibeIdComponent } from './recibe-id/recibe-id.component';
 import { RecepcionMultipleComponent } from './recepcion-multiple/recepcion-multiple.component';
+import { PadreHijoDadComponent } from './padre-hijo-dad/padre-hijo-dad.component';
+import { PadreHijoSonComponent } from './padre-hijo-son/padre-hijo-son.component';
+import { HijoPadreDadComponent } from './hijo-padre-dad/hijo-padre-dad.component';
+import { HijoPadreSonComponent } from './hijo-padre-son/hijo-padre-son.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +29,11 @@ import { RecepcionMultipleComponent } from './recepcion-multiple/recepcion-multi
     DirectivasComponent,
     EnvioIdComponent,
     RecibeIdComponent,
-    RecepcionMultipleComponent
+    RecepcionMultipleComponent,
+    PadreHijoDadComponent,
+    PadreHijoSonComponent,
+    HijoPadreDadComponent,
+    HijoPadreSonComponent
   ],
   imports: [
     BrowserModule,
