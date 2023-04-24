@@ -1,0 +1,18 @@
+<h1>Directivas</h1>
+<input type="number" [(ngModel)]="numero"><br><br>
+<select [(ngModel)]="fruta">
+    <option *ngFor="let frutilla of frutas" [value]="frutilla">{{frutilla}}</option>
+</select><br><br>
+<button (click)="mostrarResultado()">Enviar</button>
+
+<div *ngIf="resultado">
+    <div [ngSwitch]="numero">
+        <div *ngSwitchCase="'1'">Uno</div>
+        <div *ngSwitchCase="'2'">Dos</div>
+        <div *ngSwitchCase="'3'">Tres</div>
+        <div *ngSwitchCase="'4'">Cuatro</div>
+        <div *ngSwitchCase="'5'">Cinco</div>
+        <div *ngSwitchDefault>No esta tu número, así que será 6</div>
+    </div>
+    <p>Tu fruta: {{fruta}}</p>
+</div>

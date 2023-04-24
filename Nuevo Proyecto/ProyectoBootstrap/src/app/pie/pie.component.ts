@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-pie',
@@ -7,4 +8,11 @@ import { Component } from '@angular/core';
 })
 export class PieComponent {
 
+  constructor(private router:Router){
+
+  }
+
+  irFormulario(){
+    this.router.navigate(["formulario"]);
+  }
 }

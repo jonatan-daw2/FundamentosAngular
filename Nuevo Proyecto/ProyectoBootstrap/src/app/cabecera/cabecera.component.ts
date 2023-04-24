@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cabecera',
@@ -7,4 +8,20 @@ import { Component } from '@angular/core';
 })
 export class CabeceraComponent {
 
+  constructor(private router:Router){
+
+  }
+
+  irCarousel(){
+    this.router.navigate([""]);
+  }
+  irFormulario(){
+    this.router.navigate(["formulario"]);
+  }
+  irHabilidades(){
+    this.router.navigate(["habilidades"]);
+  }
+  irBlog(){
+    this.router.navigate(["blog"]);
+  }
 }
