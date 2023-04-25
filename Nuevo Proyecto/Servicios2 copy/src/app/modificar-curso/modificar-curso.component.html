@@ -1,0 +1,28 @@
+<div *ngIf="this.id==-1">
+    <h1>Dar de alta</h1>
+</div>
+<div *ngIf="this.id>=0">
+    <h1>Modificación del curso</h1>
+</div>
+<div>
+    <div *ngIf="this.id>=0">
+        <p>Id curso:</p>
+        <input type="number" [(ngModel)]="id" value="{{this.id}}" [disabled]="true"><br>
+    </div>
+    <p>Nombre del curso:</p>
+    <input type="text" [(ngModel)]="nombre" value="{{this.nombre}}"><br>
+    <p>Duracion del curso:</p>
+    <input type="number" [(ngModel)]="duracion"  value="{{this.duracion}}" min="0"><br>
+    <p>Nivel del curso:</p>
+    <select name="tipoProductoo" id="tipoProductoo" [(ngModel)]="nivel">
+        <option *ngFor="let pro of nivelesArray" [value]="pro" value="{{this.nivel}}">{{pro}}</option>
+    </select><br><br>
+    <div *ngIf="this.id>=0">
+        <button (click)="modificar()">Modificar</button>
+        <button routerLink="">Volver a listado de cursos</button>
+    </div>
+    <div *ngIf="this.id==undefined">
+        <button (click)="alta()">Alta</button>
+    </div>
+    
+</div>

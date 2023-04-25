@@ -1,0 +1,20 @@
+<h1>Listado de cursos</h1>
+<div>
+    <table>
+        <tr>
+            <th>ID Curso</th>
+            <th>Nombre Curso</th>
+            <th>Duracion Curso</th>
+            <th>Nivel Curso</th>
+        </tr>
+        <tr *ngFor="let datos of cursosArray">
+            <td>{{datos.id}}</td>
+            <td>{{datos.nombre}}</td>
+            <td>{{datos.duracion}}</td>
+            <td>{{datos.nivel}}</td>
+            <button (click)="modificar(datos.id,datos.nombre,datos.duracion,datos.nivel)">Modificar curso</button>
+        </tr>
+    </table>
+</div>
+<button routerLink="alta">Dar de alta</button>
+<router-outlet></router-outlet>
