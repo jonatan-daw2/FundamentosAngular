@@ -1,0 +1,19 @@
+<h1>Listado de alumnos</h1>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>DNI</th>
+        <th>NOMBRE</th>
+        <th>HORAS</th>
+    </tr>
+    <tr *ngFor="let datos of listado">
+        <td>{{datos.id}}</td>
+        <td>{{datos.dni}}</td>
+        <td>{{datos.nombre}}</td>
+        <td>{{datos.horasFormacion}}</td>
+        <button (click)="modificar(mostrar,datos.id,datos.dni,datos.nombre,datos.horasFormacion)">Modificar</button>
+    </tr>
+</table>
+<button (click)="buscar(mostrar)">Buscar</button>
+<button (click)="alta(mostrar)">Alta</button>
+<router-outlet></router-outlet>

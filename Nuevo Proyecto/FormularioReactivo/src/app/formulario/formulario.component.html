@@ -1,0 +1,22 @@
+<form #formulario=ngForm [formGroup]="contenido" (ngSubmit)="envio()">
+  <h1>Formulario Reactivo</h1>
+  <div *ngIf="mostrar==1 || mostrar==2 else resultadoBusqueda">
+    <div *ngIf="mostrar==1">
+      <label for="id">ID:</label><br>
+      <input type="number" id="id" disabled value="{{id}}"><br>
+    </div>
+    <label for="dni">DNI:</label><br>
+    <input type="text" dni="dni" formControlName="dni"  value="{{dni}}"><br>
+
+    <label for="nombre">Nombre:</label><br>
+    <input type="text" nombre="nombre" formControlName="nombre"  value="{{nombre}}"><br>
+
+    <label for="horas">Horas:</label><br>
+    <input type="number" horas="horas" formControlName="horas"  value="{{horas}}"><br>
+  </div>
+  <ng-template #resultadoBusqueda>
+    <input type="number" id="id" formControlName="id" value="{{id}}"><br>
+  </ng-template>
+  <button type="submit">Enviar</button>
+</form>
+<p>{{mensaje}}</p>
