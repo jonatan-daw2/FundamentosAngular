@@ -1,0 +1,10 @@
+<h1>Datelles del pedido</h1>
+<form #formulario=ngForm [formGroup]="contenido" (ngSubmit)="aniadirProducto()">
+    <p>IdPedido</p>
+    <input type="number" formControlName="idPedido"><br>
+    <p>IdProducto</p>
+    <input type="number" formControlName="idProducto"><br>
+    <p>Cantidad</p>
+    <input type="number" formControlName="cantidad"><br><br>
+    <button type="submmit">Aniadir producto</button>
+</form>

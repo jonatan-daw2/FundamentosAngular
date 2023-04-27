@@ -11,9 +11,9 @@
         <td>{{datos.dni}}</td>
         <td>{{datos.nombre}}</td>
         <td>{{datos.horasFormacion}}</td>
-        <button (click)="modificar(mostrar,datos.id,datos.dni,datos.nombre,datos.horasFormacion)">Modificar</button>
+        <button (click)="modificar(datos.id,datos.dni,datos.nombre,datos.horasFormacion)">Modificar</button>
     </tr>
 </table>
-<button (click)="buscar(mostrar)">Buscar</button>
-<button (click)="alta(mostrar)">Alta</button>
+<button (click)="buscar()">Buscar</button>
+<button (click)="alta()">Alta</button>
 <router-outlet></router-outlet>

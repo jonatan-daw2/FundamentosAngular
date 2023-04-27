@@ -1,0 +1,19 @@
+<h1>Pedidos</h1>
+<form #formulario=ngForm [formGroup]="contenido" (ngSubmit)="finalizar()">
+    <p>IdPedido</p>
+    <input type="number" formControlName="idPedido"><br>
+    <p>IdCliente</p>
+    <input type="number" formControlName="idCliente"><br>
+    <p>Forma de pago</p>
+    Efectivo
+    <input type="radio" name="formaDePago" value="efectivo" formControlName="formaDePago">
+    Tarjeta
+    <input type="radio" name="formaDePago" value="tarjeta" formControlName="formaDePago"><br>
+    <p>Direccion de envío</p>
+    <input type="text" formControlName="direccion"><br><br>
+    <div *ngIf="dato.length > 0">
+        <button type="submit">Finalizar pedido</button>
+    </div>
+</form>
+<button (click)="envio()">Añadir Productos</button>
+<router-outlet></router-outlet>

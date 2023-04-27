@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class ListadoAlumnosComponent implements OnInit{
   listado:Alumnos[]=[];
-  mostrar:number = -1;
+  mostrar:number = 0;
   
   constructor(private servicio:ServicioAlumnosService, private router:Router){
 
@@ -20,15 +20,19 @@ export class ListadoAlumnosComponent implements OnInit{
     this.servicio.mostrar().subscribe(data=>{this.listado = data});
   }
 
-  modificar(mostrar:number,id:number,dni:string,nombre:string,horas:number){
-    this.router.navigate(["modificar"],{queryParams:{mostrar:mostrar=1,id:id,dni:dni,nombre:nombre,horas:horas}});
+  modificar(id:number,dni:string,nombre:string,horas:number){
+    console.log(this.mostrar+ " "+ id+ " "+ dni+ " "+ nombre+ " "+ horas);
+    this.router.navigate(["modificar"],{queryParams:{mostrar:this.mostrar=1,id:id,dni:dni,nombre:nombre,horas:horas}});
   }
 
-  buscar(mostrar:number){
-    this.router.navigate(["buscar"],{queryParams:{mostrar:mostrar=0}});
+  buscar(){
+    
+    console.log(this.mostrar);
+    this.router.navigate(["buscar"],{queryParams:{mostrar:this.mostrar=0}});
   }
 
-  alta(mostrar:number){
-    this.router.navigate(["alta"],{queryParams:{mostrar:mostrar=2}});
+  alta(){
+    console.log(this.mostrar);
+    this.router.navigate(["alta"],{queryParams:{mostrar:this.mostrar=2}});
   }
 }
