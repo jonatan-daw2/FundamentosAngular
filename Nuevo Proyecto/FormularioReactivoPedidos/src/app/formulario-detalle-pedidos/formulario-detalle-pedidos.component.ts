@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute,Router } from '@angular/router';
-import { DetallesPedido } from '../modelo/detallesPedido';
-import { Pedidos } from '../modelo/pedidos';
 import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 import { ServicioPedidosService } from '../service/servicio-pedidos.service';
 
@@ -26,7 +24,7 @@ export class FormularioDetallePedidosComponent {
                                              this.direccion = data['direccion']});
                                           
      this.contenido = this.fb.group({
-      idPedido: new FormControl({ value: this.id, disabled: true}),
+      idPedido: new FormControl({value:this.id, disabled: true}),
       idProducto: new FormControl(""),
       cantidad: new FormControl("")
     });
@@ -39,8 +37,7 @@ export class FormularioDetallePedidosComponent {
     this.servicios.guardarProductos(idProducto,cantidad,id);
     this.dato = this.servicios.auxiliar;
     console.log(this.servicios.auxiliar);
-    //this.route.navigate([""],{queryParams:{cont:++this.cont}});
-    console.log(this.cont);
+    //console.log(this.cont);
     //console.log(this.id);
   }
 }

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 //import { Observable, of } from 'rxjs';
 import { Pedidos } from '../modelo/pedidos';
 import { DetallesPedido } from '../modelo/detallesPedido';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -10,13 +11,9 @@ export class ServicioPedidosService {
   private _pedidos:Pedidos[] = []
   private _detalles: DetallesPedido[] = [];
   private _auxiliar: DetallesPedido[] = [];
+  private _cont = 0;
 
-
-  constructor() { }
-
-  /*altaDetalles(detallesPedido:DetallesPedido){
-    this.detalles.push(detallesPedido);
-  }*/
+  constructor(private router:Router) { }
 
   altaPedidos(idCliente:number,formaDePago:string,direccion:string){
     let pedido = new Pedidos(idCliente,formaDePago,direccion);
@@ -25,8 +22,9 @@ export class ServicioPedidosService {
       this._detalles.push(this._auxiliar[i]);
     }
     this._auxiliar = [];
-    console.log(this._auxiliar);
-    console.log(this._detalles);
+    this._cont += 1;
+    this.router.navigate([""]);
+    console.log(this.cont);
   }
 
   guardarProductos(idProducto:number,cantidad:number,id:number){
@@ -44,5 +42,9 @@ export class ServicioPedidosService {
 
   public get detalles(): DetallesPedido[] {
     return this._detalles;
+  }
+
+  public get cont() {
+    return this._cont;
   }
 }

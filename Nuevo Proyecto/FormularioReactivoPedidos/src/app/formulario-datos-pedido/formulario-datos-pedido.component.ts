@@ -1,6 +1,6 @@
 import { Component,OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
-import { Pedidos } from '../modelo/pedidos';
+//import { Pedidos } from '../modelo/pedidos';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ServicioPedidosService } from '../service/servicio-pedidos.service';
 
@@ -14,7 +14,7 @@ export class FormularioDatosPedidoComponent implements OnInit{
   contenido:FormGroup = new FormGroup({});
   id:number = 0;
   dato:any;
-  cont:number = 0;
+  idPedido = new FormControl(0);
   //controlador:number = 1;
   /*idPedido:number = 0;
   idCliente:number = 0;
@@ -29,9 +29,9 @@ export class FormularioDatosPedidoComponent implements OnInit{
     }else{
       console.log("El dato: "+ this.controlador);
     }*/
-    
+
     this.contenido =  this.fb.group({
-      idPedido: new FormControl({ value: this.id=this.cont, disabled: false }),
+      idPedido: this.idPedido,
       idCliente: new FormControl(),
       formaDePago: new FormControl(),
       direccion: new FormControl()
@@ -44,7 +44,7 @@ export class FormularioDatosPedidoComponent implements OnInit{
 
   envio(){
     //let pedido = new Pedidos(this.contenido.value.idCliente,this.contenido.value.formaDePago,this.contenido.value.direccion,this.contenido.value.idPedido);
-    let id = this.contenido.value.idPedido
+    let id = this.idPedido.value;
     let idCliente = this.contenido.value.idCliente;
     let formaDePago = this.contenido.value.formaDePago;
     let direccion = this.contenido.value.direccion;
@@ -57,7 +57,9 @@ export class FormularioDatosPedidoComponent implements OnInit{
     let formaDePago = this.contenido.value.formaDePago;
     let direccion = this.contenido.value.direccion;
     this.servicios.altaPedidos(idCliente,formaDePago,direccion);
-   
-    console.log(this.servicios.pedido);
+    console.log(this.servicios.pedido)
+    let contador = this.idPedido.value as number;
+    contador++;
+    this.idPedido.setValue(contador);
   }
 }

@@ -1,7 +1,7 @@
 <h1>Pedidos</h1>
 <form #formulario=ngForm [formGroup]="contenido" (ngSubmit)="finalizar()">
     <p>IdPedido</p>
-    <input type="number" formControlName="idPedido"><br>
+    <input type="number" formControlName="idPedido" value="{{id}}" readonly><br>
     <p>IdCliente</p>
     <input type="number" formControlName="idCliente"><br>
     <p>Forma de pago</p>
