@@ -11,7 +11,6 @@ export class ServicioPedidosService {
   private _pedidos:Pedidos[] = []
   private _detalles: DetallesPedido[] = [];
   private _auxiliar: DetallesPedido[] = [];
-  private _cont = 0;
 
   constructor(private router:Router) { }
 
@@ -21,10 +20,8 @@ export class ServicioPedidosService {
     for (let i = 0; i < this._auxiliar.length; i++) {
       this._detalles.push(this._auxiliar[i]);
     }
-    this._auxiliar = [];
-    this._cont += 1;
+    this.vaciarAux();
     this.router.navigate([""]);
-    console.log(this.cont);
   }
 
   guardarProductos(idProducto:number,cantidad:number,id:number){
@@ -44,7 +41,7 @@ export class ServicioPedidosService {
     return this._detalles;
   }
 
-  public get cont() {
-    return this._cont;
+  public vaciarAux(){
+    this._auxiliar = [];
   }
 }

@@ -15,5 +15,7 @@
         <button type="submit">Finalizar pedido</button>
     </div>
 </form>
+<div *ngIf="ocultarBoton==false">
 <button (click)="envio()">Añadir Productos</button>
+</div>
 <router-outlet></router-outlet>

@@ -1,7 +1,7 @@
 <h1>Datelles del pedido</h1>
 <form #formulario=ngForm [formGroup]="contenido" (ngSubmit)="aniadirProducto()">
     <p>IdPedido</p>
-    <input type="number" formControlName="idPedido"><br>
+    <input type="number" formControlName="idPedido" readonly><br>
     <p>IdProducto</p>
     <input type="number" formControlName="idProducto"><br>
     <p>Cantidad</p>

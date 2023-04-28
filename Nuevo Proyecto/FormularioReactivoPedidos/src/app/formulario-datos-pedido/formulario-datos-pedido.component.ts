@@ -1,7 +1,7 @@
 import { Component,OnInit } from '@angular/core';
-import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
+import { FormGroup, FormControl } from '@angular/forms';
 //import { Pedidos } from '../modelo/pedidos';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { ServicioPedidosService } from '../service/servicio-pedidos.service';
 
 @Component({
@@ -15,13 +15,14 @@ export class FormularioDatosPedidoComponent implements OnInit{
   id:number = 0;
   dato:any;
   idPedido = new FormControl(0);
+  ocultarBoton:boolean = false;
   //controlador:number = 1;
   /*idPedido:number = 0;
   idCliente:number = 0;
   formaDePago:string = "";
   direccion:string = "";*/
 
-  constructor(private router:Router, private route:ActivatedRoute, private fb: FormBuilder, private servicios:ServicioPedidosService){
+  constructor(private router:Router, private servicios:ServicioPedidosService){
     /*this.route.queryParams.subscribe(data=>{this.controlador = data['cont']});
     //console.log("El dato: "+ this.controlador);
     if(this.controlador == undefined ){
@@ -30,7 +31,7 @@ export class FormularioDatosPedidoComponent implements OnInit{
       console.log("El dato: "+ this.controlador);
     }*/
 
-    this.contenido =  this.fb.group({
+    this.contenido =  new FormGroup({
       idPedido: this.idPedido,
       idCliente: new FormControl(),
       formaDePago: new FormControl(),
@@ -48,8 +49,14 @@ export class FormularioDatosPedidoComponent implements OnInit{
     let idCliente = this.contenido.value.idCliente;
     let formaDePago = this.contenido.value.formaDePago;
     let direccion = this.contenido.value.direccion;
-    this.router.navigate(["formularioDetalles"],{queryParams:{id:id,idCliente:idCliente,formaDePago:formaDePago,direccion:direccion}});
-    console.log(id+ " "+idCliente+ " "+formaDePago+ " "+direccion);
+    if((idCliente<0 || idCliente==undefined) || formaDePago==undefined || (direccion==undefined || direccion==" ")){
+      alert("Complete todos los campos");
+    }else{
+      this.router.navigate(["formularioDetalles"],{queryParams:{id:id,idCliente:idCliente,formaDePago:formaDePago,direccion:direccion}});
+      this.ocultarBoton = true;
+      console.log(id+ " "+idCliente+ " "+formaDePago+ " "+direccion);
+    }
+    
   }
 
   finalizar(){
@@ -57,9 +64,14 @@ export class FormularioDatosPedidoComponent implements OnInit{
     let formaDePago = this.contenido.value.formaDePago;
     let direccion = this.contenido.value.direccion;
     this.servicios.altaPedidos(idCliente,formaDePago,direccion);
-    console.log(this.servicios.pedido)
+    console.log(this.servicios.pedido);
+    console.log(this.servicios.detalles);
+    console.log(this.servicios.auxiliar);
+    this.contenido.reset();
     let contador = this.idPedido.value as number;
     contador++;
     this.idPedido.setValue(contador);
+    this.ocultarBoton=false;
+    this.dato = this.servicios.auxiliar;
   }
 }

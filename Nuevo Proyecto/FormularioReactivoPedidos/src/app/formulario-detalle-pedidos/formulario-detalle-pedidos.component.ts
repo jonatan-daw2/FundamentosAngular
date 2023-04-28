@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute,Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 import { ServicioPedidosService } from '../service/servicio-pedidos.service';
 
@@ -17,16 +17,16 @@ export class FormularioDetallePedidosComponent {
   dato:any;
   cont:number = 0;
 
-  constructor(private servicios:ServicioPedidosService, private router:ActivatedRoute,private fb: FormBuilder,private route:Router){
+  constructor(private servicios:ServicioPedidosService, private router:ActivatedRoute,private fb: FormBuilder){
     this.router.queryParams.subscribe(data=>{this.id = data['id'],
                                              this.idCliente = data['idCliente'],
                                              this.formaDepago = data['formaDePago'],
                                              this.direccion = data['direccion']});
                                           
-     this.contenido = this.fb.group({
-      idPedido: new FormControl({value:this.id, disabled: true}),
-      idProducto: new FormControl(""),
-      cantidad: new FormControl("")
+     this.contenido = new FormGroup({
+      idPedido: new FormControl(this.id),
+      idProducto: new FormControl(0),
+      cantidad: new FormControl(0)
     });
   }
 
@@ -34,10 +34,14 @@ export class FormularioDetallePedidosComponent {
     let id = this.id;
     let idProducto = this.contenido.value.idProducto;
     let cantidad = this.contenido.value.cantidad;
-    this.servicios.guardarProductos(idProducto,cantidad,id);
-    this.dato = this.servicios.auxiliar;
-    console.log(this.servicios.auxiliar);
-    //console.log(this.cont);
-    //console.log(this.id);
+    if((idProducto<0 || idProducto==undefined) || (cantidad==0 || cantidad==undefined || cantidad<0)){
+      alert("Complete todos los campos de producto");
+    }else{
+      this.servicios.guardarProductos(idProducto,cantidad,id);
+      this.dato = this.servicios.auxiliar;
+      this.contenido.reset();
+      this.contenido.controls['idPedido'].setValue(this.id);
+      console.log(this.servicios.auxiliar);
+    }
   }
 }
