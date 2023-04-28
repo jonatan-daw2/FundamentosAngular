@@ -16,21 +16,10 @@ export class FormularioDatosPedidoComponent implements OnInit{
   dato:any;
   idPedido = new FormControl(0);
   ocultarBoton:boolean = false;
-  //controlador:number = 1;
-  /*idPedido:number = 0;
-  idCliente:number = 0;
-  formaDePago:string = "";
-  direccion:string = "";*/
+  contador:number = 0;
 
   constructor(private router:Router, private servicios:ServicioPedidosService){
-    /*this.route.queryParams.subscribe(data=>{this.controlador = data['cont']});
-    //console.log("El dato: "+ this.controlador);
-    if(this.controlador == undefined ){
-      console.log("El dato: "+ this.controlador);
-    }else{
-      console.log("El dato: "+ this.controlador);
-    }*/
-
+    this.contador = this.servicios.pedido.length
     this.contenido =  new FormGroup({
       idPedido: this.idPedido,
       idCliente: new FormControl(),
@@ -44,7 +33,6 @@ export class FormularioDatosPedidoComponent implements OnInit{
   }
 
   envio(){
-    //let pedido = new Pedidos(this.contenido.value.idCliente,this.contenido.value.formaDePago,this.contenido.value.direccion,this.contenido.value.idPedido);
     let id = this.idPedido.value;
     let idCliente = this.contenido.value.idCliente;
     let formaDePago = this.contenido.value.formaDePago;
@@ -68,10 +56,10 @@ export class FormularioDatosPedidoComponent implements OnInit{
     console.log(this.servicios.detalles);
     console.log(this.servicios.auxiliar);
     this.contenido.reset();
-    let contador = this.idPedido.value as number;
-    contador++;
-    this.idPedido.setValue(contador);
+    this.contador += 1;
+    this.idPedido.setValue(this.contador);
     this.ocultarBoton=false;
     this.dato = this.servicios.auxiliar;
+    //console.log(contador);
   }
 }
