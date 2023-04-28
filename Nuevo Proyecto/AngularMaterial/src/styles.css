@@ -1,0 +1,64 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.example-spacer {
+    flex: 1 1 auto;
+}
+
+.contenidoPagina{
+    height: 89.5vh;
+    width: 300px;
+}
+
+/* Fondo azul oscuro para el body */
+body {
+    background-color: #1B2E4F;
+  }
+  
+  /* Texto blanco para el contenido */
+  .contenidoPagina {
+    color: #FFFFFF;
+  }
+  
+  /* Barra de navegación con fondo azul medio y texto blanco */
+  .mat-toolbar {
+    background-color: #3F6D8F;
+    color: #FFFFFF;
+  }
+  
+  /* Botones con fondo verde claro y texto negro */
+  .example-icon {
+    background-color: #B4CD9C;
+    color: #000000;
+  }
+  
+  /* Sidenav con fondo azul claro y texto negro */
+  .mat-sidenav {
+    background-color: #A3CEF1;
+    color: #000000;
+  }
+  
+  /* Enlaces del sidenav con texto negro */
+  .mat-sidenav a {
+    color: #000000;
+  }
+  
+  /* Fondo verde oscuro para el contenido principal */
+  .mat-sidenav-content {
+    background-color: #2E3D32;
+  }
+
+  .componentes{
+    padding-left: 900px;
+  }
+
+  .icono{
+    vertical-align: middle;
+    color: indigo;
+  }
+
+  .nombre{
+    vertical-align: middle;
+    color: white;
+  }

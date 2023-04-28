@@ -1,0 +1,31 @@
+<mat-toolbar>
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="sidenav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>My App</span>
+    <span class="example-spacer"></span>
+    <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+      <mat-icon>favorite</mat-icon>
+    </button>
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+      <mat-icon>share</mat-icon>
+    </button>
+  </mat-toolbar>
+  
+  <mat-sidenav-container>
+    <mat-sidenav #sidenav mode="side" opened="false">
+      <mat-nav-list *ngFor="let datos of contendor">
+        <!--Guardar contenido en un array y recorrerlo-->
+        <!--El array esta gestionado por un servicio-->
+        <!-- aplicar el routing-->
+        <a mat-list-item (click)="opcion(datos.ruta)"> <mat-icon class="icono">{{datos.icono}}</mat-icon><span class="nombre">{{datos.nombre}}</span></a>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <div class="contenidoPagina">
+            <router-outlet></router-outlet>
+        </div>
+        <!--Aqui va el router-outlet-->
+      <!-- Aquí va el contenido de la página -->
+    </mat-sidenav-content>
+  </mat-sidenav-container>

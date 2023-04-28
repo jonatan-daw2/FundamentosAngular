@@ -7,6 +7,7 @@ import { FormularioComponent } from './formulario/formulario.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { ListadoAlumnosComponent } from './listado-alumnos/listado-alumnos.component';
+import { ServicioAlumnosService } from './service/servicio-alumnos.service';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,7 @@ import { ListadoAlumnosComponent } from './listado-alumnos/listado-alumnos.compo
     ReactiveFormsModule,
     FormsModule
   ],
-  providers: [],
+  providers: [ServicioAlumnosService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
