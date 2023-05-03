@@ -62,3 +62,8 @@ body {
     vertical-align: middle;
     color: white;
   }
+  
+  p{
+    padding-top: 90%;
+    padding-left: 630px;
+  }
