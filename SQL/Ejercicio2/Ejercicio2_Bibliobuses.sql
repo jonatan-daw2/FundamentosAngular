@@ -3,60 +3,60 @@
 BEGIN;
 
 
-CREATE TABLE IF NOT EXISTS public."Socio"
+CREATE TABLE IF NOT EXISTS public."Prestamos"
 (
-    "Cód.Socio" serial NOT NULL,
-    "Nombre" character varying(60) NOT NULL,
-    "Direccion " character varying(120) NOT NULL,
-    PRIMARY KEY ("Cód.Socio")
+    "FechaIni" date NOT NULL,
+    "FechaFin" date NOT NULL,
+    "Cod_Socio" integer NOT NULL,
+    "Cod_Libro" integer NOT NULL,
+    "Cod_Prestamo" serial NOT NULL,
+    CONSTRAINT "Prestamos_pkey" PRIMARY KEY ("Cod_Prestamo")
 );
 
-CREATE TABLE IF NOT EXISTS public."Libro"
+CREATE TABLE IF NOT EXISTS public."Socio"
 (
-    "Cód.Libro " serial NOT NULL,
-    "Titulo" character varying(60) NOT NULL,
-    "Autor" character varying(60) NOT NULL,
-    "NumEjem" integer NOT NULL,
-    "Cód.Temas" integer NOT NULL,
-    PRIMARY KEY ("Cód.Libro ")
+    "Nombre" character varying(60) COLLATE pg_catalog."default" NOT NULL,
+    "Direccion " character varying(120) COLLATE pg_catalog."default" NOT NULL,
+    "Cod_Socio" serial NOT NULL,
+    CONSTRAINT "Socio_pkey" PRIMARY KEY ("Cod_Socio")
 );
 
 CREATE TABLE IF NOT EXISTS public."Tema"
 (
-    "Cód.Tema" serial NOT NULL,
-    "Nombre" character varying NOT NULL,
-    PRIMARY KEY ("Cód.Tema")
+    "Nombre" character varying(60) COLLATE pg_catalog."default" NOT NULL,
+    "Cod_Tema" serial NOT NULL,
+    CONSTRAINT "Tema_pkey" PRIMARY KEY ("Cod_Tema")
 );
 
-CREATE TABLE IF NOT EXISTS public."Prestamos"
+CREATE TABLE IF NOT EXISTS public."Libro"
 (
-    "Cód.Prestamo" serial NOT NULL,
-    "FechaIni" date NOT NULL,
-    "FechaFin" date NOT NULL,
-    "Cód.Socio" integer NOT NULL,
-    "Cód.Libro" integer NOT NULL,
-    PRIMARY KEY ("Cód.Prestamo")
+    "Nombre" character varying(60) NOT NULL,
+    "Cod_Libro" serial NOT NULL,
+    "Autor" character varying NOT NULL,
+    "NumEjem" integer NOT NULL,
+    "Cod_Tema" integer NOT NULL,
+    PRIMARY KEY ("Cod_Libro")
 );
+
+ALTER TABLE IF EXISTS public."Prestamos"
+    ADD CONSTRAINT "FK_prestamos_socios" FOREIGN KEY ("Cod_Socio")
+    REFERENCES public."Socio" ("Cod_Socio") MATCH SIMPLE
+    ON UPDATE NO ACTION
+    ON DELETE NO ACTION
+    NOT VALID;
+
+
+ALTER TABLE IF EXISTS public."Prestamos"
+    ADD CONSTRAINT "FK_prestamos_libros" FOREIGN KEY ("Cod_Libro")
+    REFERENCES public."Libro" ("Cod_Libro") MATCH SIMPLE
+    ON UPDATE NO ACTION
+    ON DELETE NO ACTION
+    NOT VALID;
+
 
 ALTER TABLE IF EXISTS public."Libro"
-    ADD CONSTRAINT "FK_libros_temas" FOREIGN KEY ("Cód.Temas")
-    REFERENCES public."Tema" ("Cód.Tema") MATCH SIMPLE
-    ON UPDATE NO ACTION
-    ON DELETE NO ACTION
-    NOT VALID;
-
-
-ALTER TABLE IF EXISTS public."Prestamos"
-    ADD CONSTRAINT "FK_prestamos_socios" FOREIGN KEY ("Cód.Socio")
-    REFERENCES public."Socio" ("Cód.Socio") MATCH SIMPLE
-    ON UPDATE NO ACTION
-    ON DELETE NO ACTION
-    NOT VALID;
-
-
-ALTER TABLE IF EXISTS public."Prestamos"
-    ADD CONSTRAINT "Fk_prestamos_libros" FOREIGN KEY ("Cód.Libro")
-    REFERENCES public."Libro" ("Cód.Libro ") MATCH SIMPLE
+    ADD CONSTRAINT "FK_libros_temas" FOREIGN KEY ("Cod_Tema")
+    REFERENCES public."Tema" ("Cod_Tema") MATCH SIMPLE
     ON UPDATE NO ACTION
     ON DELETE NO ACTION
     NOT VALID;

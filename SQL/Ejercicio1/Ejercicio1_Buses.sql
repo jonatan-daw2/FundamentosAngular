@@ -5,62 +5,54 @@ BEGIN;
 
 CREATE TABLE IF NOT EXISTS public."Autobuses"
 (
-    "Cód.Bus" serial NOT NULL,
+    "Cod_Bus" integer NOT NULL,
     "Kilometraje" numeric(7, 2) NOT NULL,
-    "Matrícula" "char" NOT NULL,
+    "Matricula" character varying(8) COLLATE pg_catalog."default" NOT NULL,
     "Plazas" integer NOT NULL,
-    "Modelo" "char" NOT NULL,
-    PRIMARY KEY ("Cód.Bus")
+    "Modelo" character varying(20) COLLATE pg_catalog."default" NOT NULL,
+    CONSTRAINT "Autobuses_pkey" PRIMARY KEY ("Cod_Bus")
 );
 
 CREATE TABLE IF NOT EXISTS public."Conductor"
 (
-    "Cód.Conductor" serial NOT NULL,
-    "DNI" "char" NOT NULL,
-    "Nombre" character varying(60) NOT NULL,
+    "Cod_Conductor" integer NOT NULL,
+    "DNI" character varying(10) COLLATE pg_catalog."default" NOT NULL,
+    "Nombre" character varying(60) COLLATE pg_catalog."default" NOT NULL,
     "Salario" numeric(6, 2) NOT NULL,
     "Edad" integer NOT NULL,
-    "Teléfono" numeric(9) NOT NULL,
+    "Teléfono" numeric(9, 0) NOT NULL,
     "Experiencia" integer NOT NULL,
-    PRIMARY KEY ("Cód.Conductor")
+    CONSTRAINT "Conductor_pkey" PRIMARY KEY ("Cod_Conductor")
 );
 
 CREATE TABLE IF NOT EXISTS public."Lugares"
 (
-    "Cód.Lugares" serial NOT NULL,
-    "Nombres" character varying NOT NULL,
-    PRIMARY KEY ("Cód.Lugares")
+    "Nombres" character varying COLLATE pg_catalog."default" NOT NULL,
+    "Cod_Lugares" integer NOT NULL DEFAULT nextval('"Lugares_Cod_Lugares_seq"'::regclass),
+    CONSTRAINT "Lugares_pkey" PRIMARY KEY ("Cod_Lugares")
 );
 
 CREATE TABLE IF NOT EXISTS public."Rutas"
 (
-    "Cód.Ruta" serial NOT NULL,
-    "Cód.Conductor" integer NOT NULL,
-    "Cód.Bus" integer NOT NULL,
-    "Cód.Lugar" integer NOT NULL,
+    "Cod_Conductor" integer NOT NULL,
+    "Cod_Bus" integer NOT NULL,
+    "Cod_Lugar" integer NOT NULL,
     "Fecha" date NOT NULL,
-    PRIMARY KEY ("Cód.Ruta")
+    "Cod_Ruta" integer NOT NULL DEFAULT nextval('"Rutas_Cod_Ruta_seq"'::regclass),
+    CONSTRAINT "Rutas_pkey" PRIMARY KEY ("Cod_Ruta")
 );
 
 ALTER TABLE IF EXISTS public."Rutas"
-    ADD CONSTRAINT "FK_rutas_autobuses" FOREIGN KEY ("Cód.Bus")
-    REFERENCES public."Autobuses" ("Cód.Bus") MATCH SIMPLE
+    ADD CONSTRAINT "FK_rutas_autobuses" FOREIGN KEY ("Cod_Bus")
+    REFERENCES public."Autobuses" ("Cod_Bus") MATCH SIMPLE
     ON UPDATE NO ACTION
     ON DELETE NO ACTION
     NOT VALID;
 
 
 ALTER TABLE IF EXISTS public."Rutas"
-    ADD CONSTRAINT "FK_rutas_lugares" FOREIGN KEY ("Cód.Lugar")
-    REFERENCES public."Lugares" ("Cód.Lugares") MATCH SIMPLE
-    ON UPDATE NO ACTION
-    ON DELETE NO ACTION
-    NOT VALID;
-
-
-ALTER TABLE IF EXISTS public."Rutas"
-    ADD CONSTRAINT "Fk_rutas_conductores" FOREIGN KEY ("Cód.Conductor")
-    REFERENCES public."Conductor" ("Cód.Conductor") MATCH SIMPLE
+    ADD CONSTRAINT "Fk_rutas_conductores" FOREIGN KEY ("Cod_Conductor")
+    REFERENCES public."Conductor" ("Cod_Conductor") MATCH SIMPLE
     ON UPDATE NO ACTION
     ON DELETE NO ACTION
     NOT VALID;
