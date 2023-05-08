@@ -1,0 +1,224 @@
+Sentencia Select----------------------------------
+Ejercicio 1
+Select * from products;
+
+Ejercicio 2
+Select product_id, product_name, supplier_id, units_in_stock, unit_price
+from products;
+
+Ejercicio 3
+select order_id, customer_id, order_date
+from orders;
+
+Ejercicio 4
+select order_id, employee_id, order_date
+from orders;
+----------------------------------------------------------------------------
+
+Columnas calculadas-----------------------------------------------------------------
+Ejercicio 5
+select product_id, product_name, unit_price * units_in_stock as valor_inventario
+from products;
+
+Ejercicio 6
+select product_id, product_name, unit_price * reorder_level as punto_reorden
+from products;
+
+Ejercicio 7
+SELECT product_id, UPPER(product_name) AS product_name, unit_price
+FROM products;
+
+Ejercicio 8
+SELECT product_id, LEFT(product_name, 10) AS product_name, unit_price
+FROM products;
+
+Ejercicio 9
+Usando LENGTH()
+SELECT product_id, product_name, LENGTH(product_name) AS longitud_nombre, unit_price
+FROM products;
+
+Usando CHAR_LENGTH()
+SELECT product_id, product_name, CHAR_LENGTH(product_name) AS longitud_nombre, unit_price
+FROM products;
+
+Ejercicio 10
+SELECT product_id, LOWER(product_name) AS product_name, unit_price
+FROM products;
+
+Ejercicio 11
+SELECT product_id, UPPER(LEFT(product_name, 10)) AS product_name, unit_price
+FROM products;
+-------------------------------------------------------------------------------------
+
+Filtros-------------------------------------------------------
+Ejercicio 12
+SELECT customer_id, company_name, country
+FROM customers
+WHERE country = 'Spain';
+
+Ejercicio 13
+SELECT customer_id, company_name, country
+FROM customers
+WHERE country LIKE 'U%';
+
+Ejercicio 14
+SELECT customer_id, company_name, country
+FROM customers
+WHERE country LIKE 'U%' OR country LIKE 'S%' OR country LIKE 'A%';
+
+Ejercicio 15
+SELECT product_id, product_name, unit_price
+FROM products
+WHERE unit_price BETWEEN 50 AND 150;
+
+Ejercicio 16
+SELECT product_id, product_name, unit_price, units_in_stock
+FROM products
+WHERE units_in_stock BETWEEN 50 AND 100;
+
+Ejercicio 17
+SELECT order_id, customer_id, employee_id
+FROM orders
+WHERE employee_id IN (1, 4, 9);
+
+Ejercicio 18
+SELECT *
+FROM products
+ORDER BY product_name ASC;
+
+Ejercicio 19
+SELECT *
+FROM products
+ORDER BY category_id ASC, unit_price DESC;
+
+Ejercicio 20
+SELECT customer_id, company_name, city, country
+FROM customers
+ORDER BY country ASC, city ASC;
+
+Ejercicio 21
+SELECT product_id, product_name, category_id, supplier_id, unit_price
+FROM products
+WHERE unit_price BETWEEN 25 AND 200
+ORDER BY category_id, supplier_id;
+----------------------------------------------------------------------------------
+
+Funciones agregacion-------------------------------------------------------------------
+Ejercicio 22
+SELECT COUNT(product_id) AS total_productos
+FROM products;
+
+Ejercicio 23
+SELECT SUM(units_in_stock) AS total_Stock
+FROM products;
+
+Ejercicio 24
+SELECT AVG(unit_price) AS media_precios
+FROM products;
+
+Ejercicio 25
+SELECT product_id, product_name, unit_price
+FROM products
+WHERE category_id = 1
+ORDER BY unit_price DESC;
+
+Ejercicio 26
+SELECT customer_id, company_name, city, country
+FROM customers
+WHERE city IN ('Barcelona', 'Lisboa')
+ORDER BY company_name DESC;
+
+Ejercicio 27
+SELECT *
+FROM orders
+WHERE customer_id = 'ALFKI'
+ORDER BY order_date DESC;
+
+Ejercicio 28
+SELECT *
+FROM order_details 
+WHERE product_id IN (1, 5, 20) 
+ORDER BY unit_price ASC;
+
+Ejercicio 29
+SELECT *
+FROM orders
+WHERE employee_id IN (2, 4)
+ORDER BY order_date ASC;
+
+Ejercicio 30
+SELECT product_id, product_name, unit_price
+FROM products
+WHERE unit_price BETWEEN 30 AND 60
+ORDER BY product_name;
+----------------------------------------------------------------------------
+
+Funciones de agrupacion ---------------------------------------------------------
+Ejercicio 31
+SELECT MAX(unit_price) AS precio_maximo, MIN(unit_price) AS precio_minimo, AVG(unit_price) AS media_precio 
+FROM products;
+------------------------------------------------------------------------------------
+
+Agrupacion--------------------------------------------------------------------------
+Ejercicio 32
+SELECT product_name, category_id, COUNT(*) as numero_productos
+FROM products
+GROUP BY product_name, category_id;
+
+Ejercicio 33
+SELECT supplier_id, AVG(unit_price) AS media_precio
+FROM products
+GROUP BY supplier_id;
+
+Ejercicio 34
+SELECT supplier_id, SUM(units_in_stock) as total_stock
+FROM products
+GROUP BY supplier_id;
+
+Ejercicio 35
+SELECT customer_id, COUNT(*) as num_ordenes
+FROM orders
+GROUP BY customer_id;
+
+Ejercicio 36
+SELECT employee_id, COUNT(order_id) AS total_ordenes
+FROM orders
+WHERE employee_id IN (1, 3, 5, 6)
+GROUP BY employee_id;
+
+Ejercicio 37
+SELECT customer_id, SUM(freight) AS suma_envio
+FROM orders
+GROUP BY client_id;
+
+Ejercicio 38
+SELECT ship_city, SUM(freight) AS total_envio
+FROM orders
+WHERE Ship_city IN ('Madrid', 'Sevilla', 'Barcelona', 'Lisboa', 'London')
+GROUP BY customer_id
+ORDER BY total_envio DESC;
+
+Ejercicio 39
+SELECT category_id, AVG(unit_price) AS media_precio
+FROM products
+WHERE discontinued = 0
+GROUP BY category_id;
+
+Ejercicio 40
+SELECT product_name, category_id, COUNT(*) AS num_products
+FROM products
+WHERE unit_price BETWEEN 10 AND 60
+AND units_in_stock > 12
+GROUP BY product_name, category_id;
+
+Ejercicio 41
+SELECT product_name, category_id, SUM(units_in_stock) AS total_unidades
+FROM products
+WHERE supplier_id IN (17, 19, 16)
+GROUP BY product_name, category_id;
+
+Ejercicio 42
+SELECT category_id, product_name, units_in_stock
+FROM products
+WHERE units_in_stock < 100
+ORDER BY units_in_stock ASC;
