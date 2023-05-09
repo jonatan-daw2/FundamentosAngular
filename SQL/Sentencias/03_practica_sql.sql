@@ -34,11 +34,11 @@ WHERE employee_id IN (SELECT employee_id
 	
 --Correlacionada
 SELECT employee_id, last_name
-FROM employees
+FROM employees e
 WHERE (
   SELECT COUNT(*)
   FROM orders
-  WHERE employee_id = employees.employee_id
+  WHERE employee_id = e.employee_id
 ) < 100;
 
 
@@ -75,8 +75,8 @@ WHERE product_id IN (
 --Correlacionadas
 SELECT product_id, product_name, supplier_id
 FROM products p
-WHERE EXISTS (
-  SELECT 1
+WHERE product_id IN (
+  SELECT product_id
   FROM order_details od
   WHERE od.product_id = p.product_id
   GROUP BY od.product_id
@@ -96,14 +96,17 @@ WHERE employee_id IN (
 
 --Correlacionada
 SELECT employee_id, CONCAT(first_name, ' ', last_name) AS nombre_completo
-FROM employees
-WHERE employee_id IN (
-  SELECT employee_id
-  FROM orders
-  WHERE orders.employee_id = employees.employee_id
+FROM employees e 
+WHERE EXISTS (SELECT employee_id
+  FROM orders o
+  WHERE o.employee_id = e.employee_id
   GROUP BY employee_id
   HAVING COUNT(*) > 100
 );
+
+--SELECT product_id, product_name, supplier_id 
+--FROM products AS p WHERE 
+--(SELECT SUM(od.quantity) FROM order_details AS od WHERE p.product_id = od.product_id) < 100;
 
 
 --Obtener los datos de Producto ProductId, ProductName, UnitsinStock, UnitPrice (Tabla Products) de los productos que la sumatoria de la cantidad (Quantity) de orders details sea mayor a 450
@@ -118,15 +121,19 @@ WHERE product_id IN (
 
 --Correlacion
 SELECT product_id, product_name, units_in_stock, unit_price
-FROM products
-WHERE product_id IN (
+FROM products as p
+WHERE (
   SELECT product_id
-  FROM order_details
-  WHERE order_details.product_id = products.product_id
+  FROM order_details od
+  WHERE od.product_id = p.product_id
   GROUP BY product_id
   HAVING SUM(quantity) > 450
 );
 
+--CORRECCION
+SELECT product_id, product_name, units_in_stock, unit_price 
+FROM products AS p 
+WHERE (SELECT SUM(od.quantity) FROM order_details AS od WHERE p.product_id = od.product_id) > 450;
 
 --Obtener la clave de cliente y el nombre de la empresa para aquellos clientes que tengan más de 20 ordenes.
 SELECT customer_id, company_name
@@ -140,14 +147,19 @@ WHERE customer_id IN (
 
 --Correlacion
 SELECT customer_id, company_name
-FROM customers
+FROM customers c
 WHERE customer_id IN (
   SELECT customer_id
-  FROM orders
-  WHERE customers.customer_id = orders.customer_id
+  FROM orders o
+  WHERE c.customer_id = o.customer_id
   GROUP BY customer_id
   HAVING COUNT(*) > 20
 );
+
+--CORRECCION
+SELECT customer_id, company_name 
+FROM customers AS c 
+WHERE (SELECT COUNT(o.order_id) FROM orders AS o WHERE c.customer_id = o.customer_id) > 20;
 
 
 --insert
