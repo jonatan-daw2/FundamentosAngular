@@ -31,7 +31,7 @@ $$ LANGUAGE plpgsql;
     y muestre la tabla de multiplicar de ese numero.
 */
 DO $$
-DECLARE nota integer:= 7;
+DECLARE nota integer:= 8;
 DECLARE i integer:= 0;
 
 BEGIN
@@ -80,22 +80,24 @@ Luego se realiza un bucle FOR para calcular el detalle de cada cuota mensual,
 mostrando en la consola de mensajes el número del mes, la cuota, el interés, la amortización y el capital pendiente.
 
 Al final, se retorna el valor de la cuota mensual.
+
+C = V/(1-(1+i))^n/i
 */
 
 DO $$
 DECLARE cuota numeric;
-DECLARE interes numeric := 20;
-DECLARE amortizacion numeric := 10;
-DECLARE tasa_interes numeric := 3;
-DECLARE duracion_mes integer := 2;
-DECLARE prestamo numeric := 7;
+DECLARE interes numeric;
+DECLARE amortizacion numeric;
+DECLARE tasa_interes numeric := 0.07;
+DECLARE duracion_mes integer := 36; --n
+DECLARE prestamo numeric := 100;
 
 BEGIN
-	interes := tasa_interes/12;
-	cuota := (prestamo * interes) / (1 -(1+interes)^(-duracion_mes));
+	interes := tasa_interes/12; -- i
+	cuota := (prestamo * interes) / (1 -(1+interes)^(-duracion_mes)); -- duracion prestamo / 1 -(1-interes mensual)^(-numero de meses)
 	
 	FOR i IN 1..duracion_mes LOOP
-		amortizacion := cuota - (prestamo * interes);
+		amortizacion := cuota - (prestamo * interes); -- cuota * anios, v
 		prestamo := prestamo - amortizacion;
 		
 		 RAISE NOTICE 'Mes %: Cuota: %, Interes: %, Amortizacion: %, Capital Pendiente: %', i, cuota, prestamo * interes, amortizacion, prestamo;
